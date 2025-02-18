@@ -1,0 +1,151 @@
+<h1 class="text-uppercase">Nueva Cuenta</h1>
+
+<form [formGroup]="cuentasForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Cuentas</h2>
+                </div>
+                <div class="panel-body">
+                    <div class="well">
+                        <p class="text-primary">Datos de usuario</p>
+                        <div class="form-horizontal">
+
+                            <div class="form-group"
+                                [ngClass]="{'has-error': cuentasForm.get('identificador')?.invalid && cuentasForm.get('identificador')?.touched}">
+                                <label class="col-sm-5 control-label">Identificador<em>*</em></label>
+                                <div class="col-sm-7">
+                                    <input class="form-control" formControlName="identificador" />
+                                    <span
+                                        *ngIf="cuentasForm.get('identificador')?.invalid && !cuentasForm.get('identificador')?.hasError('serverError') && cuentasForm.get('identificador')?.touched"
+                                        class="text-danger">Identificador es obligatorio y debe tener entre 6 y 10
+                                        caracteres.</span>
+                                    <span
+                                        *ngIf="cuentasForm.get('identificador')?.hasError('serverError') && cuentasForm.get('identificador')?.touched"
+                                        class="text-danger">{{ cuentasForm.get('identificador')?.getError('serverError') }}</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group"
+                                [ngClass]="{'has-error': cuentasForm.get('nuevoPassword')?.invalid && cuentasForm.get('nuevoPassword')?.touched}">
+                                <label class="col-sm-5 control-label">Nuevo Password<em>*</em></label>
+                                <div class="col-sm-7">
+                                    <input type="password" class="form-control" formControlName="nuevoPassword" />
+                                    <span
+                                        *ngIf="cuentasForm.get('nuevoPassword')?.invalid && cuentasForm.get('nuevoPassword')?.touched"
+                                        class="text-danger">La contraseña debe tener al menos 6 caracteres.</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group"
+                                [ngClass]="{'has-error': cuentasForm.get('repetirPassword')?.invalid && cuentasForm.get('repetirPassword')?.touched}">
+                                <label class="col-sm-5 control-label">Repetir Password<em>*</em></label>
+                                <div class="col-sm-7">
+                                    <input type="password" class="form-control" formControlName="repetirPassword" />
+                                    <span
+                                        *ngIf="cuentasForm.get('repetirPassword')?.invalid && cuentasForm.get('repetirPassword')?.touched"
+                                        class="text-danger">Las contraseñas no coinciden.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="well">
+                        <p class="text-primary">Información sobre la cuenta</p>
+                        <div class="form-horizontal">
+
+                            <div class="form-group"
+                                [ngClass]="{'has-error': cuentasForm.get('nombre')?.invalid && cuentasForm.get('nombre')?.touched}">
+                                <label class="col-sm-5 control-label">Nombre<em>*</em></label>
+                                <div class="col-sm-7">
+                                    <input class="form-control" formControlName="nombre" />
+                                    <span
+                                        *ngIf="cuentasForm.get('nombre')?.invalid && cuentasForm.get('nombre')?.touched"
+                                        class="text-danger">Nombre es obligatorio.</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group"
+                                [ngClass]="{'has-error': cuentasForm.get('apellido')?.invalid && cuentasForm.get('apellido')?.touched}">
+                                <label class="col-sm-5 control-label">Apellido<em>*</em></label>
+                                <div class="col-sm-7">
+                                    <input class="form-control" formControlName="apellido" />
+                                    <span
+                                        *ngIf="cuentasForm.get('apellido')?.invalid && cuentasForm.get('apellido')?.touched"
+                                        class="text-danger">Apellido es obligatorio.</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group"
+                                [ngClass]="{'has-error': cuentasForm.get('correo')?.invalid && cuentasForm.get('correo')?.touched}">
+                                <label class="col-sm-5 control-label">Correo<em>*</em></label>
+                                <div class="col-sm-7">
+                                    <input type="email" class="form-control" formControlName="correo" />
+                                    <span
+                                        *ngIf="cuentasForm.get('correo')?.invalid && !cuentasForm.get('correo')?.hasError('serverError') && cuentasForm.get('correo')?.touched"
+                                        class="text-danger">Ingrese un correo válido.</span>
+                                    <span
+                                        *ngIf="cuentasForm.get('correo')?.hasError('serverError') && cuentasForm.get('correo')?.touched"
+                                        class="text-danger">{{ cuentasForm.get('correo')?.getError('serverError') }}</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group"
+                                [ngClass]="{'has-error': cuentasForm.get('telefono')?.invalid && cuentasForm.get('telefono')?.touched}">
+                                <label class="col-sm-5 control-label">Teléfono<em>*</em></label>
+                                <div class="col-sm-7">
+                                    <input class="form-control" formControlName="telefono" placeholder="987654321" />
+                                    <span
+                                        *ngIf="cuentasForm.get('telefono')?.invalid && cuentasForm.get('telefono')?.touched"
+                                        class="text-danger">Ingrese un teléfono válido (9 dígitos numéricos).</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group"
+                                [ngClass]="{'has-error': cuentasForm.get('fecha')?.invalid && cuentasForm.get('fecha')?.touched}">
+                                <label class="col-sm-5 control-label">Fecha<em>*</em></label>
+                                <div class="col-sm-7">
+                                    <input type="date" class="form-control" formControlName="fecha" />
+                                    <span *ngIf="cuentasForm.get('fecha')?.invalid && cuentasForm.get('fecha')?.touched"
+                                        class="text-danger">La fecha es obligatoria.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="well">
+                        <p class="text-primary">Informacion Perfil (Ajax)</p>
+                        <div class="form-horizontal">
+                            <div class="form-group"
+                                [ngClass]="{'has-error': cuentasForm.get('idioma')?.invalid && cuentasForm.get('idioma')?.touched}">
+                                <label class="col-sm-5 control-label" for="idioma">Idioma<em>*</em></label>
+                                <div class="col-sm-7">
+                                    <select class="form-control" formControlName="idioma">
+                                        <option value="CASTELLANO">Castellano</option>
+                                        <option value="EUSKERA">Euskera</option>
+                                        <option value="INGLES">Inglés</option>
+                                        <option value="ALEMAN">Aleman</option>
+                                        <option value="FRANCES">Francés</option>
+                                    </select>
+                                    <span
+                                        *ngIf="cuentasForm.get('idioma')?.invalid && cuentasForm.get('idioma')?.touched"
+                                        class="text-danger">Seleccione un idioma.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row text-right">
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-default">Cancelar</button>
+                            <button type="submit" class="btn btn-primary" [disabled]="!cuentasForm.valid">
+                                Crear cuenta
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

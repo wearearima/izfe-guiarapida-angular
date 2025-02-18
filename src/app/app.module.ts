@@ -12,6 +12,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
+import { NuevoUsuarioComponent } from './nuevo-usuario/nuevo-usuario.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UnauthorizedComponent } from './error/unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     MenuComponent,
-    ListaComponent
+    ListaComponent,
+    NuevoUsuarioComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
