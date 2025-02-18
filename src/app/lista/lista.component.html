@@ -67,7 +67,7 @@
 
     <ng-container matColumnDef="creationDate">
         <th mat-header-cell *matHeaderCellDef> Fecha de creación </th>
-        <td mat-cell *matCellDef="let element"> {{element.fcreacion}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.fcreacion | date: 'dd-MM-yyyy'}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
