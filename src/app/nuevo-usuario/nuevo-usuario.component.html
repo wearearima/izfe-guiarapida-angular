@@ -17,13 +17,14 @@
                                 <label class="col-sm-5 control-label">Identificador<em>*</em></label>
                                 <div class="col-sm-7">
                                     <input class="form-control" formControlName="identificador" />
+                                    @if (cuentasForm.get('identificador')?.invalid && !cuentasForm.get('identificador')?.hasError('serverError') && cuentasForm.get('identificador')?.touched) {
                                     <span
-                                        *ngIf="cuentasForm.get('identificador')?.invalid && !cuentasForm.get('identificador')?.hasError('serverError') && cuentasForm.get('identificador')?.touched"
                                         class="text-danger">Identificador es obligatorio y debe tener entre 6 y 10
                                         caracteres.</span>
+                                    } @else if (cuentasForm.get('identificador')?.hasError('serverError') && cuentasForm.get('identificador')?.touched) {
                                     <span
-                                        *ngIf="cuentasForm.get('identificador')?.hasError('serverError') && cuentasForm.get('identificador')?.touched"
                                         class="text-danger">{{ cuentasForm.get('identificador')?.getError('serverError') }}</span>
+                                    }
                                 </div>
                             </div>
 
@@ -32,9 +33,10 @@
                                 <label class="col-sm-5 control-label">Nuevo Password<em>*</em></label>
                                 <div class="col-sm-7">
                                     <input type="password" class="form-control" formControlName="nuevoPassword" />
+                                    @if (cuentasForm.get('nuevoPassword')?.invalid && cuentasForm.get('nuevoPassword')?.touched) {
                                     <span
-                                        *ngIf="cuentasForm.get('nuevoPassword')?.invalid && cuentasForm.get('nuevoPassword')?.touched"
                                         class="text-danger">La contraseña debe tener al menos 6 caracteres.</span>
+                                    }
                                 </div>
                             </div>
 
@@ -43,9 +45,10 @@
                                 <label class="col-sm-5 control-label">Repetir Password<em>*</em></label>
                                 <div class="col-sm-7">
                                     <input type="password" class="form-control" formControlName="repetirPassword" />
+                                    @if (cuentasForm.get('repetirPassword')?.invalid && cuentasForm.get('repetirPassword')?.touched) {
                                     <span
-                                        *ngIf="cuentasForm.get('repetirPassword')?.invalid && cuentasForm.get('repetirPassword')?.touched"
                                         class="text-danger">Las contraseñas no coinciden.</span>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -60,9 +63,10 @@
                                 <label class="col-sm-5 control-label">Nombre<em>*</em></label>
                                 <div class="col-sm-7">
                                     <input class="form-control" formControlName="nombre" />
+                                    @if (cuentasForm.get('nombre')?.invalid && cuentasForm.get('nombre')?.touched) {
                                     <span
-                                        *ngIf="cuentasForm.get('nombre')?.invalid && cuentasForm.get('nombre')?.touched"
                                         class="text-danger">Nombre es obligatorio.</span>
+                                    }
                                 </div>
                             </div>
 
@@ -71,9 +75,10 @@
                                 <label class="col-sm-5 control-label">Apellido<em>*</em></label>
                                 <div class="col-sm-7">
                                     <input class="form-control" formControlName="apellido" />
+                                    @if (cuentasForm.get('apellido')?.invalid && cuentasForm.get('apellido')?.touched) {
                                     <span
-                                        *ngIf="cuentasForm.get('apellido')?.invalid && cuentasForm.get('apellido')?.touched"
                                         class="text-danger">Apellido es obligatorio.</span>
+                                    }
                                 </div>
                             </div>
 
@@ -82,12 +87,13 @@
                                 <label class="col-sm-5 control-label">Correo<em>*</em></label>
                                 <div class="col-sm-7">
                                     <input type="email" class="form-control" formControlName="correo" />
+                                    @if (cuentasForm.get('correo')?.invalid && !cuentasForm.get('correo')?.hasError('serverError') && cuentasForm.get('correo')?.touched) {
                                     <span
-                                        *ngIf="cuentasForm.get('correo')?.invalid && !cuentasForm.get('correo')?.hasError('serverError') && cuentasForm.get('correo')?.touched"
                                         class="text-danger">Ingrese un correo válido.</span>
+                                    } @else if (cuentasForm.get('correo')?.hasError('serverError') && cuentasForm.get('correo')?.touched) {
                                     <span
-                                        *ngIf="cuentasForm.get('correo')?.hasError('serverError') && cuentasForm.get('correo')?.touched"
                                         class="text-danger">{{ cuentasForm.get('correo')?.getError('serverError') }}</span>
+                                    }
                                 </div>
                             </div>
 
@@ -96,9 +102,10 @@
                                 <label class="col-sm-5 control-label">Teléfono<em>*</em></label>
                                 <div class="col-sm-7">
                                     <input class="form-control" formControlName="telefono" placeholder="987654321" />
+                                    @if (cuentasForm.get('telefono')?.invalid && cuentasForm.get('telefono')?.touched) {
                                     <span
-                                        *ngIf="cuentasForm.get('telefono')?.invalid && cuentasForm.get('telefono')?.touched"
                                         class="text-danger">Ingrese un teléfono válido (9 dígitos numéricos).</span>
+                                    }
                                 </div>
                             </div>
 
@@ -107,8 +114,10 @@
                                 <label class="col-sm-5 control-label">Fecha<em>*</em></label>
                                 <div class="col-sm-7">
                                     <input type="date" class="form-control" formControlName="fecha" />
-                                    <span *ngIf="cuentasForm.get('fecha')?.invalid && cuentasForm.get('fecha')?.touched"
+                                    @if (cuentasForm.get('fecha')?.invalid && cuentasForm.get('fecha')?.touched) {
+                                    <span
                                         class="text-danger">La fecha es obligatoria.</span>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -128,9 +137,10 @@
                                         <option value="ALEMAN">Aleman</option>
                                         <option value="FRANCES">Francés</option>
                                     </select>
+                                    @if (cuentasForm.get('idioma')?.invalid && cuentasForm.get('idioma')?.touched) {
                                     <span
-                                        *ngIf="cuentasForm.get('idioma')?.invalid && cuentasForm.get('idioma')?.touched"
                                         class="text-danger">Seleccione un idioma.</span>
+                                    }
                                 </div>
                             </div>
                         </div>

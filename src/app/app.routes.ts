@@ -4,7 +4,7 @@ import { ListaComponent } from './lista/lista.component';
 import { NuevoUsuarioComponent } from './nuevo-usuario/nuevo-usuario.component';
 import { UnauthorizedComponent } from './error/unauthorized/unauthorized.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: ListaComponent
@@ -18,9 +18,3 @@ const routes: Routes = [
     component: UnauthorizedComponent
   }
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }

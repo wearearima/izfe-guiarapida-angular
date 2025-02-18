@@ -1,11 +1,14 @@
+import { NgClass } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CuentaService } from '../shared/cuenta.service';
 import { Router } from '@angular/router';
 import { HttpStatusCode } from '@angular/common/http';
 
 @Component({
   selector: 'app-nuevo-usuario',
+  standalone: true,
+  imports: [ReactiveFormsModule, NgClass],
   templateUrl: './nuevo-usuario.component.html',
   styleUrls: ['./nuevo-usuario.component.scss']
 })

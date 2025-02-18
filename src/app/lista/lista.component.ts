@@ -1,12 +1,16 @@
 import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { Page } from '../model/page';
 import { CuentaService } from '../shared/cuenta.service';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Subscription } from 'rxjs';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-lista',
+  standalone: true,
+  imports: [MatTableModule, DatePipe, MatPaginatorModule, MatProgressSpinnerModule],
   templateUrl: './lista.component.html',
   styleUrls: ['./lista.component.scss']
 })
